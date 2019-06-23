@@ -18,7 +18,7 @@ type State = {
 
 class Homepage extends React.Component<Props, State> {
   state = {
-    repoName: 'facebook/react-na',
+    repoName: 'facebook/react-native',
     loading: false,
   };
 
@@ -28,6 +28,7 @@ class Homepage extends React.Component<Props, State> {
     this.setState({ loading: true });
     commitsList(repoName, (err, data) => {
       if (!err) {
+        // console.log('no of data', data);
         navigation.navigate('CommitsList', { data });
       } else {
         alert('Repo Not Found');
