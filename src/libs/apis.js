@@ -18,14 +18,17 @@ export const login = (username: string, password: string, callback: Function): v
     .catch(err => callback(true, err.response));
 };
 
-export const commitsList = (repoName: string, callback: Function): void => {
+export const commitsList = (repoName: string, page: number, callback: Function): void => {
   const repoUrl = `${BASE_URL}/repos/${repoName}/commits`;
-  console.log('repo', repoUrl);
   axios({
     method: 'get',
     url: repoUrl,
     headers: {
       Accept: 'application/vnd.github.v3+json',
+    },
+    params: {
+      page,
+      per_page: 30,
     },
   })
     .then(res => callback(false, res.data))

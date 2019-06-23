@@ -11,4 +11,12 @@ export default EStyleSheet.create({
     paddingVertical: '10rem',
     width: '$window.width',
   },
+  activityIndicator: {
+    marginTop: '120rem',
+  },
+  footer: {
+    width: '$window.width',
+    height: 50,
+    paddingVertical: '15rem',
+  },
 });
