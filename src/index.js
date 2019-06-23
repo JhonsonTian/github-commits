@@ -8,6 +8,7 @@ const { width, height } = Dimensions.get('window');
 EStyleSheet.build({
   $primaryBlue: '#0B5195',
   $primaryWhite: '#FFFFFF',
+  $middleGray: '#D9D9D9',
 
   $window: {
     width,
