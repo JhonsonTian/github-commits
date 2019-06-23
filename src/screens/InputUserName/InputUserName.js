@@ -6,29 +6,38 @@ import { MyStatusBar } from '../../components/MyStatusBar';
 import { CustomButton } from '../../components/CustomButton';
 import styles from './styles';
 
-function InputUserName() {
-  const [userName, setUserName] = React.useState('');
+type Props = {
+  navigation: Object,
+};
 
-  const onUserNameTextChange = (text) => {
-    setUserName(text);
+type State = {
+  userName: string,
+};
+
+class InputUserName extends React.Component<Props, State> {
+  state = {
+    userName: '',
   };
 
-  const onNextPress = () => {
-    console.log(userName);
+  onNextPress = () => {
+    const { userName } = this.state;
+    const { navigation } = this.props;
+    navigation.navigate('InputPassword', { userName });
   };
 
-  return (
-    <View style={styles.container}>
-      <MyStatusBar backgroundColor={styles.$blue} />
-      <Header title="Login" />
-      <TextInput
-        placeholder="User Name"
-        style={styles.textInput}
-        onChangeText={onUserNameTextChange}
-      />
-      <CustomButton text="Next" onPress={onNextPress} style={styles.button} />
-    </View>
-  );
+  render() {
+    return (
+      <View style={styles.container}>
+        <MyStatusBar backgroundColor={styles.$blue} />
+        <Header title="Login" />
+        <TextInput
+          placeholder="User Name"
+          style={styles.textInput}
+        />
+        <CustomButton text="Next" onPress={this.onNextPress} style={styles.button} />
+      </View>
+    );
+  }
 }
 
 export default InputUserName;
