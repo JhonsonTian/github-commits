@@ -22,8 +22,14 @@ class InputUserName extends React.Component<Props, State> {
   onNextPress = () => {
     const { userName } = this.state;
     const { navigation } = this.props;
+    if (userName.length === 0) {
+      alert('Please Input valid User Name');
+      return;
+    }
     navigation.navigate('InputPassword', { userName });
   };
+
+  onChangeText = (userName: string) => this.setState({ userName });
 
   render() {
     return (
@@ -33,6 +39,7 @@ class InputUserName extends React.Component<Props, State> {
         <TextInput
           placeholder="User Name"
           style={styles.textInput}
+          onChangeText={this.onChangeText}
         />
         <CustomButton text="Next" onPress={this.onNextPress} style={styles.button} />
       </View>
