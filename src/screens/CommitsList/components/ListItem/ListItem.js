@@ -25,7 +25,7 @@ function ListItem({ data }: Props) {
       <View style={styles.detailContainer}>
         <View style={styles.avatarContainer}>
           <Image
-            source={{ uri: data.author.avatar_url }}
+            source={data.author ? { uri: data.author.avatar_url } : require('./default.png')}
             style={styles.imageContainer}
             resizeMode="contain"
           />
